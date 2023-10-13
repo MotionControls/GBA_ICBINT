@@ -4,6 +4,8 @@ C:\devkitPro\libtonc/lib\libtonc.a(tonc_oam.o)
                               main.o (oam_init)
 C:\devkitPro\libtonc/lib\libtonc.a(tonc_memcpy.o)
                               main.o (memcpy32)
+C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb\libg.a(libc_a-memcpy-stub.o)
+                              GameLogic.o (memcpy)
 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb\libg.a(libc_a-init.o)
                               C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb/gba_crt0.o (__libc_init_array)
 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb\libsysbase.a(libsysbase_libsysbase_a-malloc_vars.o)
@@ -24,15 +26,25 @@ Discarded input sections
                 0x00000000       0x24 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtbegin.o
  .data.__dso_handle
                 0x00000000        0x4 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtbegin.o
- .data          0x00000000        0x0 Logic.o
- .bss           0x00000000        0x0 Logic.o
+ .data          0x00000000        0x0 GameLogic.o
+ .bss           0x00000000        0x0 GameLogic.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
+ .data          0x00000000        0x0 Sprites.o
+ .bss           0x00000000        0x0 Sprites.o
+ .text          0x00000000        0x0 Sprite_Test.o
+ .data          0x00000000        0x0 Sprite_Test.o
+ .bss           0x00000000        0x0 Sprite_Test.o
+ .text          0x00000000        0x0 Sprite_Test2.o
+ .data          0x00000000        0x0 Sprite_Test2.o
+ .bss           0x00000000        0x0 Sprite_Test2.o
  .data          0x00000000        0x0 C:\devkitPro\libtonc/lib\libtonc.a(tonc_oam.o)
  .bss           0x00000000        0x0 C:\devkitPro\libtonc/lib\libtonc.a(tonc_oam.o)
- .text          0x00000000       0x44 C:\devkitPro\libtonc/lib\libtonc.a(tonc_memcpy.o)
  .data          0x00000000        0x0 C:\devkitPro\libtonc/lib\libtonc.a(tonc_memcpy.o)
  .bss           0x00000000        0x0 C:\devkitPro\libtonc/lib\libtonc.a(tonc_memcpy.o)
+ .text          0x00000000        0x0 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb\libg.a(libc_a-memcpy-stub.o)
+ .data          0x00000000        0x0 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb\libg.a(libc_a-memcpy-stub.o)
+ .bss           0x00000000        0x0 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb\libg.a(libc_a-memcpy-stub.o)
  .text          0x00000000        0x0 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb\libg.a(libc_a-init.o)
  .data          0x00000000        0x0 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb\libg.a(libc_a-init.o)
  .bss           0x00000000        0x0 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb\libg.a(libc_a-init.o)
@@ -88,92 +100,106 @@ Linker script and memory map
  *(.plt)
                 0x0800021c                        . = ALIGN (0x4)
 
-.text           0x0800021c      0x1f8
+.text           0x0800021c      0x460
  *(EXCLUDE_FILE(*.iwram*) .text*)
  .text.__do_global_dtors_aux
                 0x0800021c       0x2c C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtbegin.o
  .text.frame_dummy
                 0x08000248       0x24 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtbegin.o
- .text          0x0800026c       0x44 Logic.o
-                0x0800026c                UpdateObjects
- .text.startup  0x080002b0       0x54 main.o
-                0x080002b0                main
- .text          0x08000304       0xbc C:\devkitPro\libtonc/lib\libtonc.a(tonc_oam.o)
-                0x08000304                oam_init
-                0x0800034c                obj_copy
-                0x0800036c                obj_hide_multi
-                0x08000394                obj_unhide_multi
+ .text          0x0800026c       0xb4 GameLogic.o
+                0x0800026c                InitObject
+                0x080002dc                UpdateObjects
+ .text.startup  0x08000320       0xe4 main.o
+                0x08000320                main
+ .text          0x08000404       0x94 Sprites.o
+                0x08000404                InitSprite
+                0x08000454                InitBackground
+ .text          0x08000498       0xbc C:\devkitPro\libtonc/lib\libtonc.a(tonc_oam.o)
+                0x08000498                oam_init
+                0x080004e0                obj_copy
+                0x08000500                obj_hide_multi
+                0x08000528                obj_unhide_multi
+ .text          0x08000554       0x44 C:\devkitPro\libtonc/lib\libtonc.a(tonc_memcpy.o)
+                0x08000554                memcpy16
+ .text.memcpy   0x08000598       0x90 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb\libg.a(libc_a-memcpy-stub.o)
+                0x08000598                memcpy
  .text.__libc_init_array
-                0x080003c0       0x54 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb\libg.a(libc_a-init.o)
-                0x080003c0                __libc_init_array
+                0x08000628       0x54 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb\libg.a(libc_a-init.o)
+                0x08000628                __libc_init_array
  *(.gnu.linkonce.t.*)
  *(.text.*personality*)
  *(.gnu.warning)
  *(.glue_7t)
- .glue_7t       0x08000414        0x0 linker stubs
+ .glue_7t       0x0800067c        0x0 linker stubs
  *(.glue_7)
- .glue_7        0x08000414        0x0 linker stubs
+ .glue_7        0x0800067c        0x0 linker stubs
  *(.vfp11_veneer)
- .vfp11_veneer  0x08000414        0x0 linker stubs
-                0x08000414                        . = ALIGN (0x4)
-                0x08000414                        __text_end = .
+ .vfp11_veneer  0x0800067c        0x0 linker stubs
+                0x0800067c                        . = ALIGN (0x4)
+                0x0800067c                        __text_end = .
 
-.v4_bx          0x08000414        0x0
- .v4_bx         0x08000414        0x0 linker stubs
+.v4_bx          0x0800067c        0x0
+ .v4_bx         0x0800067c        0x0 linker stubs
 
-.iplt           0x08000414        0x0
- .iplt          0x08000414        0x0 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb/gba_crt0.o
+.iplt           0x0800067c        0x0
+ .iplt          0x0800067c        0x0 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb/gba_crt0.o
 
-.fini           0x08000414        0xc
+.fini           0x0800067c        0xc
  *(.fini)
- .fini          0x08000414        0x4 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crti.o
-                0x08000414                _fini
- .fini          0x08000418        0x8 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtn.o
-                0x08000420                        . = ALIGN (0x4)
+ .fini          0x0800067c        0x4 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crti.o
+                0x0800067c                _fini
+ .fini          0x08000680        0x8 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtn.o
+                0x08000688                        . = ALIGN (0x4)
 
-.rodata         0x08000420        0x0
+.rodata         0x08000688       0x50
  *(.rodata)
+ .rodata        0x08000688       0x28 Sprite_Test.o
+                0x08000688                Sprite_TestPal
+                0x08000690                Sprite_TestTiles
+ .rodata        0x080006b0       0x28 Sprite_Test2.o
+                0x080006b0                Sprite_Test2Pal
+                0x080006b8                Sprite_Test2Tiles
  *all.rodata*(*)
  *(.roda)
  *(.rodata.*)
  *(.gnu.linkonce.r*)
-                0x08000420                        . = ALIGN (0x4)
+                0x080006d8                        . = ALIGN (0x4)
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x08000420                        __exidx_start = .
+                0x080006d8                        __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x08000420                        __exidx_end = .
+                0x080006d8                        __exidx_end = .
 
-.ctors          0x08000420        0x0
+.ctors          0x080006d8        0x0
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT_BY_NAME(.ctors.*))
  *(.ctors)
-                0x08000420                        . = ALIGN (0x4)
+                0x080006d8                        . = ALIGN (0x4)
 
-.dtors          0x08000420        0x0
+.dtors          0x080006d8        0x0
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT_BY_NAME(.dtors.*))
  *(.dtors)
-                0x08000420                        . = ALIGN (0x4)
+                0x080006d8                        . = ALIGN (0x4)
 
-.eh_frame       0x08000420        0x4
+.eh_frame       0x080006d8        0x4
  *(.eh_frame)
- .eh_frame      0x08000420        0x0 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtbegin.o
- .eh_frame      0x08000420        0x4 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtend.o
-                0x08000424                        . = ALIGN (0x4)
+ .eh_frame      0x080006d8        0x0 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtbegin.o
+ .eh_frame      0x080006d8        0x4 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtend.o
+                0x080006dc                        . = ALIGN (0x4)
 
 .gcc_except_table
-                0x08000424        0x0
+                0x080006dc        0x0
  *(.gcc_except_table)
-                0x08000424                        . = ALIGN (0x4)
-                0x08000424                        __iwram_lma = .
+                0x080006dc                        . = ALIGN (0x4)
+                0x080006dc                        __iwram_lma = .
 
-.iwram          0x03000000       0x38 load address 0x08000424
+.iwram          0x03000000       0x38 load address 0x080006dc
                 0x03000000                        __iwram_start__ = ABSOLUTE (.)
  *(.iwram .iwram*)
  .iwram         0x03000000       0x38 C:\devkitPro\libtonc/lib\libtonc.a(tonc_memcpy.o)
@@ -181,7 +207,7 @@ Linker script and memory map
  *iwram.*(.text* .data*)
                 0x03000038                        . = ALIGN (0x4)
                 0x03000038                        __iwram_end__ = ABSOLUTE (.)
-                0x0800045c                        __data_lma = (__iwram_lma + SIZEOF (.iwram))
+                0x08000714                        __data_lma = (__iwram_lma + SIZEOF (.iwram))
 
 .bss            0x03000038      0xf20
                 0x03000038                        __bss_start = ABSOLUTE (.)
@@ -203,49 +229,49 @@ Linker script and memory map
                 0x03000f58                        . = ALIGN (0x4)
                 0x03000f58                        __bss_end__ = ABSOLUTE (.)
 
-.data           0x03000f58        0x0 load address 0x0800045c
+.data           0x03000f58        0x0 load address 0x08000714
                 0x03000f58                        __data_start__ = ABSOLUTE (.)
  *(.data*)
  *(.gnu.linkonce.d*)
                 0x03000f58                        . = ALIGN (0x4)
-                0x0800045c                        __preinit_lma = (__data_lma + SIZEOF (.data))
+                0x08000714                        __preinit_lma = (__data_lma + SIZEOF (.data))
 
-.igot.plt       0x03000038        0x0 load address 0x0800045c
+.igot.plt       0x03000038        0x0 load address 0x08000714
  .igot.plt      0x03000038        0x0 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb/gba_crt0.o
 
-.preinit_array  0x03000f58        0x0 load address 0x0800045c
+.preinit_array  0x03000f58        0x0 load address 0x08000714
                 0x03000f58                        __preinit_array_start = ABSOLUTE (.)
  *(.preinit_array)
                 0x03000f58                        __preinit_array_end = ABSOLUTE (.)
-                0x0800045c                        __init_lma = (__preinit_lma + SIZEOF (.preinit_array))
+                0x08000714                        __init_lma = (__preinit_lma + SIZEOF (.preinit_array))
 
-.init_array     0x03000f58        0x4 load address 0x0800045c
+.init_array     0x03000f58        0x4 load address 0x08000714
                 0x03000f58                        __init_array_start = ABSOLUTE (.)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array)
  .init_array    0x03000f58        0x4 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtbegin.o
                 0x03000f5c                        __init_array_end = ABSOLUTE (.)
-                0x08000460                        __fini_lma = (__init_lma + SIZEOF (.init_array))
+                0x08000718                        __fini_lma = (__init_lma + SIZEOF (.init_array))
 
-.fini_array     0x03000f5c        0x4 load address 0x08000460
+.fini_array     0x03000f5c        0x4 load address 0x08000718
                 0x03000f5c                        __fini_array_start = ABSOLUTE (.)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array)
  .fini_array    0x03000f5c        0x4 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtbegin.o
                 0x03000f60                        __fini_array_end = ABSOLUTE (.)
-                0x08000464                        __jcr_lma = (__fini_lma + SIZEOF (.fini_array))
+                0x0800071c                        __jcr_lma = (__fini_lma + SIZEOF (.fini_array))
 
 .jcr
  *(.jcr)
                 0x03000f60                        __data_end__ = ABSOLUTE (.)
-                0x08000464                        __iwram_overlay_lma = (__jcr_lma + SIZEOF (.jcr))
+                0x0800071c                        __iwram_overlay_lma = (__jcr_lma + SIZEOF (.jcr))
                 0x03000f60                        __iwram_overlay_start = .
 
-.iwram0         0x03000f60        0x0 load address 0x08000464
+.iwram0         0x03000f60        0x0 load address 0x0800071c
  *(.iwram0)
                 0x03000f60                        . = ALIGN (0x4)
-                0x08000464                        PROVIDE (__load_start_iwram0 = LOADADDR (.iwram0))
-                0x08000464                        PROVIDE (__load_stop_iwram0 = (LOADADDR (.iwram0) + SIZEOF (.iwram0)))
+                0x0800071c                        PROVIDE (__load_start_iwram0 = LOADADDR (.iwram0))
+                0x0800071c                        PROVIDE (__load_stop_iwram0 = (LOADADDR (.iwram0) + SIZEOF (.iwram0)))
 
 .iwram1         0x03000f60        0x0
  *(.iwram1)
@@ -301,15 +327,15 @@ Linker script and memory map
                 [!provide]                        PROVIDE (__load_start_iwram9 = LOADADDR (.iwram9))
                 [!provide]                        PROVIDE (__load_stop_iwram9 = (LOADADDR (.iwram9) + SIZEOF (.iwram9)))
                 0x03000f60                        __iwram_overlay_end = .
-                0x08000464                        __ewram_lma = (__iwram_overlay_lma + (__iwram_overlay_end - __iwram_overlay_start))
+                0x0800071c                        __ewram_lma = (__iwram_overlay_lma + (__iwram_overlay_end - __iwram_overlay_start))
                 0x03000f60                        __iheap_start = .
                 0x02000000                        __ewram_start = ORIGIN (ewram)
 
-.ewram          0x02000000        0x0 load address 0x08000464
+.ewram          0x02000000        0x0 load address 0x0800071c
  *(.ewram*)
                 0x02000000                        . = ALIGN (0x4)
                 0x02000000                        __ewram_end = ABSOLUTE (.)
-                0x08000464                        __pad_lma = (__ewram_lma + SIZEOF (.ewram))
+                0x0800071c                        __pad_lma = (__ewram_lma + SIZEOF (.ewram))
 
 .sbss           0x02000000        0x0
                 0x02000000                        __sbss_start__ = ABSOLUTE (.)
@@ -319,13 +345,13 @@ Linker script and memory map
                 0x02000000                        __end__ = ABSOLUTE (.)
                 0x02000000                        __eheap_start = ABSOLUTE (.)
 
-.pad            0x02000000        0x8 load address 0x08000464
+.pad            0x02000000        0x8 load address 0x0800071c
                 0x02000000        0x4 LONG 0x52416b64
                 0x02000004        0x4 LONG 0x4d
                 0x02000008                        . = ALIGN (0x4)
-                0x0800046c                        __rom_end__ = (__pad_lma + SIZEOF (.pad))
+                0x08000724                        __rom_end__ = (__pad_lma + SIZEOF (.pad))
 
-.rel.dyn        0x02000008        0x0 load address 0x0800046c
+.rel.dyn        0x02000008        0x0 load address 0x08000724
  .rel.iplt      0x02000008        0x0 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb/gba_crt0.o
 
 .stab
@@ -350,10 +376,14 @@ Linker script and memory map
  *(.comment)
  .comment       0x00000000       0x23 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtbegin.o
                                  0x24 (size before relaxing)
- .comment       0x00000023       0x24 Logic.o
+ .comment       0x00000023       0x24 GameLogic.o
  .comment       0x00000023       0x24 main.o
+ .comment       0x00000023       0x24 Sprites.o
+ .comment       0x00000023       0x24 Sprite_Test.o
+ .comment       0x00000023       0x24 Sprite_Test2.o
  .comment       0x00000023       0x22 C:\devkitPro\libtonc/lib\libtonc.a(tonc_oam.o)
                                  0x23 (size before relaxing)
+ .comment       0x00000045       0x24 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb\libg.a(libc_a-memcpy-stub.o)
  .comment       0x00000045       0x24 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb\libg.a(libc_a-init.o)
  .comment       0x00000045       0x24 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb\libsysbase.a(libsysbase_libsysbase_a-malloc_vars.o)
  .comment       0x00000045       0x24 C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtend.o
@@ -370,42 +400,64 @@ Linker script and memory map
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0x40
+.debug_aranges  0x00000000       0x90
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x20 Logic.o
+                0x00000000       0x20 GameLogic.o
  .debug_aranges
                 0x00000020       0x20 main.o
+ .debug_aranges
+                0x00000040       0x20 Sprites.o
+ .debug_aranges
+                0x00000060       0x18 Sprite_Test.o
+ .debug_aranges
+                0x00000078       0x18 Sprite_Test2.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0x62f
+.debug_info     0x00000000      0xd51
  *(.debug_info)
- .debug_info    0x00000000      0x25b Logic.o
- .debug_info    0x0000025b      0x3d4 main.o
+ .debug_info    0x00000000      0x360 GameLogic.o
+ .debug_info    0x00000360      0x5de main.o
+ .debug_info    0x0000093e      0x31f Sprites.o
+ .debug_info    0x00000c5d       0x7a Sprite_Test.o
+ .debug_info    0x00000cd7       0x7a Sprite_Test2.o
 
-.debug_abbrev   0x00000000      0x36f
+.debug_abbrev   0x00000000      0x62a
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x151 Logic.o
- .debug_abbrev  0x00000151      0x21e main.o
+ .debug_abbrev  0x00000000      0x1bc GameLogic.o
+ .debug_abbrev  0x000001bc      0x273 main.o
+ .debug_abbrev  0x0000042f      0x15f Sprites.o
+ .debug_abbrev  0x0000058e       0x4e Sprite_Test.o
+ .debug_abbrev  0x000005dc       0x4e Sprite_Test2.o
 
-.debug_line     0x00000000      0x29b
+.debug_line     0x00000000      0x620
  *(.debug_line)
- .debug_line    0x00000000      0x12b Logic.o
- .debug_line    0x0000012b      0x170 main.o
+ .debug_line    0x00000000      0x19f GameLogic.o
+ .debug_line    0x0000019f      0x240 main.o
+ .debug_line    0x000003df      0x14e Sprites.o
+ .debug_line    0x0000052d       0x79 Sprite_Test.o
+ .debug_line    0x000005a6       0x7a Sprite_Test2.o
 
-.debug_frame    0x00000000       0x5c
+.debug_frame    0x00000000       0xdc
  *(.debug_frame)
- .debug_frame   0x00000000       0x2c Logic.o
- .debug_frame   0x0000002c       0x30 main.o
+ .debug_frame   0x00000000       0x58 GameLogic.o
+ .debug_frame   0x00000058       0x3c main.o
+ .debug_frame   0x00000094       0x48 Sprites.o
 
-.debug_str      0x00000000      0x323
+.debug_str      0x00000000      0x501
  *(.debug_str)
- .debug_str     0x00000000      0x1e9 Logic.o
-                                0x222 (size before relaxing)
- .debug_str     0x000001e9      0x13a main.o
-                                0x2fd (size before relaxing)
+ .debug_str     0x00000000      0x213 GameLogic.o
+                                0x253 (size before relaxing)
+ .debug_str     0x00000213      0x19f main.o
+                                0x372 (size before relaxing)
+ .debug_str     0x000003b2       0x9c Sprites.o
+                                0x1e5 (size before relaxing)
+ .debug_str     0x0000044e       0x59 Sprite_Test.o
+                                0x138 (size before relaxing)
+ .debug_str     0x000004a7       0x5a Sprite_Test2.o
+                                0x13b (size before relaxing)
 
 .debug_loc
  *(.debug_loc)
@@ -442,29 +494,40 @@ Linker script and memory map
  .ARM.attributes
                 0x0000003c       0x2a C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtbegin.o
  .ARM.attributes
-                0x00000066       0x2a Logic.o
+                0x00000066       0x2a GameLogic.o
  .ARM.attributes
                 0x00000090       0x2a main.o
  .ARM.attributes
-                0x000000ba       0x2a C:\devkitPro\libtonc/lib\libtonc.a(tonc_oam.o)
+                0x000000ba       0x2a Sprites.o
  .ARM.attributes
-                0x000000e4       0x1a C:\devkitPro\libtonc/lib\libtonc.a(tonc_memcpy.o)
+                0x000000e4       0x2a Sprite_Test.o
  .ARM.attributes
-                0x000000fe       0x2a C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb\libg.a(libc_a-init.o)
+                0x0000010e       0x2a Sprite_Test2.o
  .ARM.attributes
-                0x00000128       0x2a C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb\libsysbase.a(libsysbase_libsysbase_a-malloc_vars.o)
+                0x00000138       0x2a C:\devkitPro\libtonc/lib\libtonc.a(tonc_oam.o)
  .ARM.attributes
-                0x00000152       0x2a C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtend.o
+                0x00000162       0x1a C:\devkitPro\libtonc/lib\libtonc.a(tonc_memcpy.o)
  .ARM.attributes
-                0x0000017c       0x1c C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtn.o
+                0x0000017c       0x2a C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb\libg.a(libc_a-memcpy-stub.o)
+ .ARM.attributes
+                0x000001a6       0x2a C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb\libg.a(libc_a-init.o)
+ .ARM.attributes
+                0x000001d0       0x2a C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb\libsysbase.a(libsysbase_libsysbase_a-malloc_vars.o)
+ .ARM.attributes
+                0x000001fa       0x2a C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtend.o
+ .ARM.attributes
+                0x00000224       0x1c C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtn.o
 
 /DISCARD/
  *(.note.GNU-stack)
 LOAD C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-none-eabi/lib/thumb/gba_crt0.o
 LOAD C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crti.o
 LOAD C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtbegin.o
-LOAD Logic.o
+LOAD GameLogic.o
 LOAD main.o
+LOAD Sprites.o
+LOAD Sprite_Test.o
+LOAD Sprite_Test2.o
 LOAD C:/devkitPro/libgba/lib\libmm.a
 LOAD C:/devkitPro/libgba/lib\libgba.a
 LOAD C:\devkitPro\libtonc/lib\libtonc.a
@@ -477,19 +540,21 @@ LOAD C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/../../../../arm-
 END GROUP
 LOAD C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtend.o
 LOAD C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/13.1.0/thumb/crtn.o
-OUTPUT(C:/Users/bprso/OneDrive/Desktop/Dev/Projects/GBA/GBA_Tetris/a.elf elf32-littlearm)
+OUTPUT(C:/Users/bprso/OneDrive/Desktop/Dev/Projects/GBA/GBA_ICBINT/a.elf elf32-littlearm)
 LOAD linker stubs
 
 .debug_loclists
-                0x00000000       0xc6
+                0x00000000      0x378
  .debug_loclists
-                0x00000000       0x90 Logic.o
+                0x00000000      0x1a5 GameLogic.o
  .debug_loclists
-                0x00000090       0x36 main.o
+                0x000001a5       0x9f main.o
+ .debug_loclists
+                0x00000244      0x134 Sprites.o
 
 .debug_rnglists
-                0x00000000       0x39
+                0x00000000       0x4b
  .debug_rnglists
-                0x00000000       0x1a Logic.o
+                0x00000000       0x1f GameLogic.o
  .debug_rnglists
-                0x0000001a       0x1f main.o
+                0x0000001f       0x2c main.o
