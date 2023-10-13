@@ -8,15 +8,16 @@
 #include "GameLogic.h"
 #include "Sprites.h"
 
-OBJ_ATTR oamArray[OAM_MAX];		// OAM Buffer
+OBJ_ATTR oamArray[OAM_MAX];			// OAM Buffer
 OAMObject objArray[OAM_MAX];
+Tetrimino tetriminoArray[OAM_MAX];
 
 int main(){
 	// Var Init
 	int oamCount = 0;
+	int tetriCount = 0;
 	int curSpriteID = 0;
-	//int curCharBlock = 4;
-	int curScrBlock = 0;
+	//int curScrBlock = 0;
 
 	// Init Resources
 	oam_init(oamArray, OAM_MAX);
@@ -28,10 +29,7 @@ int main(){
 	curSpriteID = InitSprite(curSpriteID, 8, 0, Sprite_Mino6Tiles, Sprite_Mino6TilesLen, Sprite_Mino6Pal, Sprite_Mino6PalLen);
 
 	Vec2 pos = {0,0};
-	do{
-		oamCount = InitObject(objArray, oamCount, pos, 0, 0, 0, oamCount, 0, 0);
-		pos.x += 8;
-	}while(oamCount < 6);
+	InitTee(objArray, &oamCount, tetriminoArray, &tetriCount, pos);
 
 	REG_DISPCNT = DCNT_OBJ | DCNT_BG0 | DCNT_BG1;
 	while(1){

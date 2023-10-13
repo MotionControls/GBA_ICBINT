@@ -1,7 +1,9 @@
 #ifndef GAMELOGIC_H
 #define GAMELOGIC_H
 
-#include "tonc.h"
+#include <tonc.h>
+
+#include "Sprites.h"
 
 #define OAM_MAX 128         // Max amount of objects allowed.
 
@@ -19,7 +21,23 @@ typedef struct{             // Representation of OAM objects.
     u16 palette;
 }OAMObject;
 
+typedef struct{
+    int minoType;   // Which tetrimino it is.
+    int minos[4];   // All minos making up the tetrimino.
+    int rot;        // 0 = 0 ; 1 = 90 ; 2 = 180 ; 3 = 270
+    Vec2 pos;       // Pos of the origin.
+}Tetrimino;
+
+/*  Mino w/ Origins
+            [ ]                                 
+    [ ]     [ ]     [ ]        [ ]   [ ]        
+    [ ]     [x]     [ ]     [x][ ]   [ ][x]        [ ]
+    [x][ ]  [ ]  [ ][x]     [ ]         [ ]     [ ][x][ ]
+*/  
+
 int InitObject(OAMObject* objArr, int count, Vec2 pos, u16 col, u16 shp, u16 sz, u16 tile, u16 pri, u16 pal);
 void UpdateObjects(OBJ_ATTR* oamArr, OAMObject* objArr, int count);
+
+void InitTee(OAMObject* objArr, int* objCount, Tetrimino* tetArr, int* tetCount, Vec2 pos);
 
 #endif

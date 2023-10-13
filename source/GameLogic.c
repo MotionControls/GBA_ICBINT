@@ -23,3 +23,12 @@ void UpdateObjects(OBJ_ATTR* oamArr, OAMObject* objArr, int count){
             objArr[i].palette | objArr[i].priority | objArr[i].tileIndex);
     }
 }
+
+void InitTee(OAMObject* oA, int* oC, Tetrimino* tetArr, int* tetCount, Vec2 pos){
+    for(int i = 0; i < 4; i++){
+        oC = (int*)InitObject(oA, oC, pos, 0, 0, 0, SPR_TEE, 0, 0);
+        pos.y += 8;
+    }
+
+    tetCount += 4;
+}
