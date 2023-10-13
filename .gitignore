@@ -1,5 +1,6 @@
 /res
 /build
+/.vscode
 *.gba
 *.sav
 *.elf
