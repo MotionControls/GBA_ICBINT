@@ -1,8 +1,8 @@
 #include "Sprites.h"
 
 int InitSprite(int sb, int size, u16 stSize, const u16* t, int tL, const u16* p, int pL){
-    memcpy16(&tile_mem[4][sb], t, tL/2); // Tiles
-	memcpy16(pal_obj_mem+(stSize/2), p, pL/2);     // Palette
+    memcpy16(&tile_mem[4][sb], t, tL/2);        // Tiles
+	memcpy16(pal_obj_mem+(stSize/2), p, pL/2);  // Palette
 
     return sb += (size/8);
 }

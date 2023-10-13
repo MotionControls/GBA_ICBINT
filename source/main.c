@@ -18,16 +18,20 @@ int main(){
 	//int curCharBlock = 4;
 	int curScrBlock = 0;
 
-	// Init
+	// Init Resources
 	oam_init(oamArray, OAM_MAX);
-	
-	curSpriteID = InitSprite(curSpriteID, 8, 0, Sprite_TestTiles, Sprite_TestTilesLen, Sprite_TestPal, Sprite_TestPalLen);
-	Vec2 pos = {10,15};
-	oamCount = InitObject(objArray, oamCount, pos, 0, 0, 0, 0, 0, 0);
+	curSpriteID = InitSprite(curSpriteID, 8, 0, Sprite_Mino1Tiles, Sprite_Mino1TilesLen, Sprite_Mino1Pal, Sprite_Mino1PalLen);
+	curSpriteID = InitSprite(curSpriteID, 8, 0, Sprite_Mino2Tiles, Sprite_Mino2TilesLen, Sprite_Mino2Pal, Sprite_Mino2PalLen);
+	curSpriteID = InitSprite(curSpriteID, 8, 0, Sprite_Mino3Tiles, Sprite_Mino3TilesLen, Sprite_Mino3Pal, Sprite_Mino3PalLen);
+	curSpriteID = InitSprite(curSpriteID, 8, 0, Sprite_Mino4Tiles, Sprite_Mino4TilesLen, Sprite_Mino4Pal, Sprite_Mino4PalLen);
+	curSpriteID = InitSprite(curSpriteID, 8, 0, Sprite_Mino5Tiles, Sprite_Mino5TilesLen, Sprite_Mino5Pal, Sprite_Mino5PalLen);
+	curSpriteID = InitSprite(curSpriteID, 8, 0, Sprite_Mino6Tiles, Sprite_Mino6TilesLen, Sprite_Mino6Pal, Sprite_Mino6PalLen);
 
-	curSpriteID = InitSprite(curSpriteID, 8, Sprite_TestPalLen, Sprite_Test2Tiles, Sprite_Test2TilesLen, Sprite_Test2Pal, Sprite_Test2PalLen);
-	pos.x = pos.y = 0;
-	oamCount = InitObject(objArray, oamCount, pos, 0, 0, 0, 1, 0, 0);
+	Vec2 pos = {0,0};
+	do{
+		oamCount = InitObject(objArray, oamCount, pos, 0, 0, 0, oamCount, 0, 0);
+		pos.x += 8;
+	}while(oamCount < 6);
 
 	REG_DISPCNT = DCNT_OBJ | DCNT_BG0 | DCNT_BG1;
 	while(1){
