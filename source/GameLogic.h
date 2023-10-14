@@ -38,6 +38,12 @@ typedef struct{
 int InitObject(OAMObject* objArr, int count, Vec2 pos, u16 col, u16 shp, u16 sz, u16 tile, u16 pri, u16 pal);
 void UpdateObjects(OBJ_ATTR* oamArr, OAMObject* objArr, int count);
 
-void InitTee(OAMObject* objArr, int* objCount, Tetrimino* tetArr, int* tetCount, Vec2 pos);
+void InitTee(OAMObject* objArr, int objCount, Vec2 pos);
+void InitEss(OAMObject* objArr, int objCount, Vec2 pos);
+void InitO(OAMObject* objArr, int objCount, Vec2 pos);
+void InitAi(OAMObject* objArr, int objCount, Vec2 pos);
+void InitJay(OAMObject* objArr, int objCount, Vec2 pos);
+void InitElle(OAMObject* objArr, int objCount, Vec2 pos);
+void InitZed(OAMObject* objArr, int objCount, Vec2 pos);
 
 #endif

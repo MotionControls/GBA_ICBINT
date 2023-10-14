@@ -8,15 +8,19 @@
 #include "GameLogic.h"
 #include "Sprites.h"
 
+void InitTetriminoAdd(int ID, Vec2 pos);
+
 OBJ_ATTR oamArray[OAM_MAX];			// OAM Buffer
 OAMObject objArray[OAM_MAX];
 Tetrimino tetriminoArray[OAM_MAX];
 
+int oamCount, tetriCount, curSpriteID;
+
 int main(){
 	// Var Init
-	int oamCount = 0;
-	int tetriCount = 0;
-	int curSpriteID = 0;
+	oamCount = 0;
+	tetriCount = 0;
+	curSpriteID = 0;
 	//int curScrBlock = 0;
 
 	// Init Resources
@@ -28,8 +32,17 @@ int main(){
 	curSpriteID = InitSprite(curSpriteID, 8, 0, Sprite_Mino5Tiles, Sprite_Mino5TilesLen, Sprite_Mino5Pal, Sprite_Mino5PalLen);
 	curSpriteID = InitSprite(curSpriteID, 8, 0, Sprite_Mino6Tiles, Sprite_Mino6TilesLen, Sprite_Mino6Pal, Sprite_Mino6PalLen);
 
-	Vec2 pos = {0,0};
-	InitTee(objArray, &oamCount, tetriminoArray, &tetriCount, pos);
+	int temp = 0;
+	Vec2 pos = {0, 0};
+	do{
+		InitTetriminoAdd(temp, pos);
+		pos.x += 32;
+		if(temp == 0)
+			temp += 1;
+		else
+			temp *= 2;
+	}while(temp <= MINO_ZED);
+	//oamCount = InitTee(objArray, oamCount, pos);
 
 	REG_DISPCNT = DCNT_OBJ | DCNT_BG0 | DCNT_BG1;
 	while(1){
@@ -39,4 +52,33 @@ int main(){
 
 		oam_copy(oam_mem, oamArray, oamCount);
 	}
+}
+
+void InitTetriminoAdd(int ID, Vec2 pos){
+	switch(ID){
+		case MINO_TEE:
+			InitTee(objArray, oamCount, pos);
+			break;
+		case MINO_ESS:
+			InitEss(objArray, oamCount, pos);
+			break;
+		case MINO_O:
+			InitO(objArray, oamCount, pos);
+			break;
+		case MINO_AI:
+			InitAi(objArray, oamCount, pos);
+			break;
+		case MINO_JAY:
+			InitJay(objArray, oamCount, pos);
+			break;
+		case MINO_ELLE:
+			InitElle(objArray, oamCount, pos);
+			break;
+		case MINO_ZED:
+			InitZed(objArray, oamCount, pos);
+			break;
+	}
+
+	oamCount += 4;
+	tetriCount += 4;
 }

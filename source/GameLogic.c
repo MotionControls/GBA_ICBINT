@@ -24,11 +24,88 @@ void UpdateObjects(OBJ_ATTR* oamArr, OAMObject* objArr, int count){
     }
 }
 
-void InitTee(OAMObject* oA, int* oC, Tetrimino* tetArr, int* tetCount, Vec2 pos){
+void InitTee(OAMObject* oA, int oC, Vec2 pos){
+    pos.y += 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_TEE, 0, 0);
+    pos.x += 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_TEE, 0, 0);
+    pos.x += 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_TEE, 0, 0);
+    pos.x -= 8;
+    pos.y -= 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_TEE, 0, 0);
+
+    //return oC;
+}
+
+void InitEss(OAMObject* oA, int oC, Vec2 pos){
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_ESS, 0, 0);
+    pos.y += 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_ESS, 0, 0);
+    pos.x += 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_ESS, 0, 0);
+    pos.y += 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_ESS, 0, 0);
+
+    //return oC;
+}
+
+void InitO(OAMObject* oA, int oC, Vec2 pos){
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_O, 0, 0);
+    pos.y += 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_O, 0, 0);
+    pos.y -= 8;
+    pos.x += 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_O, 0, 0);
+    pos.y += 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_O, 0, 0);
+
+    //return oC;
+}
+
+void InitAi(OAMObject* oA, int oC, Vec2 pos){
     for(int i = 0; i < 4; i++){
-        oC = (int*)InitObject(oA, oC, pos, 0, 0, 0, SPR_TEE, 0, 0);
+        oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_AI, 0, 0);
         pos.y += 8;
     }
 
-    tetCount += 4;
+    //return oC;
+}
+
+void InitJay(OAMObject* oA, int oC, Vec2 pos){
+    pos.x += 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_JAY, 0, 0);
+    pos.y += 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_JAY, 0, 0);
+    pos.y += 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_JAY, 0, 0);
+    pos.x -= 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_JAY, 0, 0);
+
+    //return oC;
+}
+
+void InitElle(OAMObject* oA, int oC, Vec2 pos){
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_ELLE, 0, 0);
+    pos.y += 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_ELLE, 0, 0);
+    pos.y += 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_ELLE, 0, 0);
+    pos.x += 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_ELLE, 0, 0);
+
+    //return oC;
+}
+
+void InitZed(OAMObject* oA, int oC, Vec2 pos){
+    pos.x += 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_ZED, 0, 0);
+    pos.y += 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_ZED, 0, 0);
+    pos.x -= 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_ZED, 0, 0);
+    pos.y += 8;
+    oC = InitObject(oA, oC, pos, 0, 0, 0, SPR_ZED, 0, 0);
+
+    //return oC;
 }
