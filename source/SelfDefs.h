@@ -14,4 +14,11 @@
 #define MINO_ELLE   16
 #define MINO_ZED    32
 
+// Tetrimino Attributes
+#define MINO_OBJ_SIZE       8
+#define MINO_OBJ_COLMODE    0
+#define MINO_OBJ_OBJMODE    0
+#define MINO_OBJ_SHAPE      0
+#define MINO_OBJ_SIZE       0
+#define MINO_OBJ_PAL        0
 #endif

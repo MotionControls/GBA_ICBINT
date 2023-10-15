@@ -5,7 +5,10 @@
 
 #include "Sprites.h"
 
-#define OAM_MAX 128         // Max amount of objects allowed.
+#define GRID_WID    10
+#define GRID_HGT    24
+#define GRID_CUTOFF 4                               // How far from the top a tetrimino has to be placed to gameover.
+#define OAM_MAX     (GRID_WID*GRID_HGT)+4           // Max amount of objects allowed.
 
 typedef struct{
     u16 x, y;
