@@ -29,7 +29,7 @@
 #define SPR_ELLE    SPR_AI+4    // L
 #define SPR_ZED     SPR_ESS+8   // Z
 
-int InitSprite(int spriteBank, int perTileSize, int tileCount, const u16* tiles, int tilesLen, const u16* palette, int paletteLen);
+void InitSprite(int spriteBank, const u16* tiles, int tilesLen, const u16* palette, int paletteLen);
 void InitBackground(const u16*, int, const u16*, int, const u16*, int);
 
 #endif
