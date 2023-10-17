@@ -12,16 +12,24 @@
 #include "sprites/Sprite_Mino5.h"
 #include "sprites/Sprite_Mino6.h"
 
-// Sprite IDs for Tetriminoes.
-#define SPR_TEE     0   // T
-#define SPR_ESS     5   // S
-#define SPR_O       2   // O
-#define SPR_AI      1   // I
-#define SPR_JAY     4   // J
-#define SPR_ELLE    5   // L
-#define SPR_ZED     4   // Z
+#include "sprites/Sprite_Ai.h"
+#include "sprites/Sprite_Elle.h"
+#include "sprites/Sprite_Jay.h"
+#include "sprites/Sprite_Ess.h"
+#include "sprites/Sprite_Zed.h"
+#include "sprites/Sprite_Tee.h"
+#include "sprites/Sprite_O.h"
 
-int InitSprite(int spriteBank, int size, u16 palStepSize, const u16* tiles, int tilesLen, const u16* palette, int paletteLen);
+// Sprite IDs for Tetriminoes.
+#define SPR_TEE     SPR_ZED+8   // T
+#define SPR_ESS     SPR_JAY+8   // S
+#define SPR_O       SPR_TEE+8   // O
+#define SPR_AI      0           // I
+#define SPR_JAY     SPR_ELLE+8  // J
+#define SPR_ELLE    SPR_AI+4    // L
+#define SPR_ZED     SPR_ESS+8   // Z
+
+int InitSprite(int spriteBank, int perTileSize, int tileCount, const u16* tiles, int tilesLen, const u16* palette, int paletteLen);
 void InitBackground(const u16*, int, const u16*, int, const u16*, int);
 
 #endif

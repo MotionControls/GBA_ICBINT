@@ -4,11 +4,13 @@
 #include <tonc.h>
 
 #include "Sprites.h"
+#include "SelfDefs.h"
 
 #define GRID_WID    10
 #define GRID_HGT    24
-#define GRID_CUTOFF 4                               // How far from the top a tetrimino has to be placed to gameover.
-#define OAM_MAX     (GRID_WID*GRID_HGT)+4           // Max amount of objects allowed.
+#define GRID_CUTOFF 4       // How far from the top a tetrimino has to be placed to gameover.
+#define OAM_MAX     128     // Max amount of objects allowed.
+#define OAM_RESERVE 8       // Reserved for stuff like UI.
 
 typedef struct{
     u16 x, y;
@@ -40,6 +42,8 @@ typedef struct{
 
 int InitObject(OAMObject* objArr, int count, Vec2 pos, u16 col, u16 shp, u16 sz, u16 tile, u16 pri, u16 pal);
 void UpdateObjects(OBJ_ATTR* oamArr, OAMObject* objArr, int count);
+
+void InitTetrimino(OBJ_ATTR* obj, int ID, Vec2 pos);
 
 void InitTee(OAMObject* objArr, int objCount, Vec2 pos);
 void InitEss(OAMObject* objArr, int objCount, Vec2 pos);
