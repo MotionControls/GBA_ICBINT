@@ -39,17 +39,17 @@ int main(){
 
 	Vec2 pos = {0,0};
 	InitTetriminoAdd(MINO_AI, pos);
-	pos.x += 8;
+	pos.x += SPR_AI_WID;
 	InitTetriminoAdd(MINO_ELLE, pos);
-	pos.x += 16;
+	pos.x += SPR_ELLE_WID;
 	InitTetriminoAdd(MINO_JAY, pos);
-	pos.x += 16;
+	pos.x += SPR_JAY_WID;
 	InitTetriminoAdd(MINO_ESS, pos);
-	pos.x += 32;
+	pos.x += SPR_ESS_WID;
 	InitTetriminoAdd(MINO_ZED, pos);
-	pos.x += 32;
+	pos.x += SPR_ZED_WID;
 	InitTetriminoAdd(MINO_TEE, pos);
-	pos.x += 32;
+	pos.x += SPR_TEE_WID;
 	InitTetriminoAdd(MINO_O, pos);
 	
 	REG_DISPCNT = DCNT_OBJ | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1;

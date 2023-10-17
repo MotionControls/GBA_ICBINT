@@ -29,6 +29,28 @@
 #define SPR_ELLE    SPR_AI+4    // L
 #define SPR_ZED     SPR_ESS+8   // Z
 
+// Sizes assume the Tetriminos are right-side up.
+#define SPR_AI_WID     8
+#define SPR_AI_HGT     32
+
+#define SPR_ESS_WID     24
+#define SPR_ESS_HGT     16
+
+#define SPR_ZED_WID     24
+#define SPR_ZED_HGT     16
+
+#define SPR_TEE_WID     24
+#define SPR_TEE_HGT     16
+
+#define SPR_ELLE_WID    16
+#define SPR_ELLE_HGT    24
+
+#define SPR_JAY_WID     16
+#define SPR_JAY_HGT     24
+
+#define SPR_O_WID       16
+#define SPR_O_HGT       16
+
 void InitSprite(int spriteBank, const u16* tiles, int tilesLen, const u16* palette, int paletteLen);
 void InitBackground(const u16*, int, const u16*, int, const u16*, int);
 
