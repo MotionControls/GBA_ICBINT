@@ -44,6 +44,7 @@ int InitObject(OAMObject* objArr, int count, Vec2 pos, u16 col, u16 shp, u16 sz,
 void UpdateObjects(OBJ_ATTR* oamArr, OAMObject* objArr, int count);
 
 void InitTetrimino(OBJ_ATTR* obj, int ID, Vec2 pos);
+void RemoveTetrimino(OBJ_ATTR* obj);
 
 void InitTee(OAMObject* objArr, int objCount, Vec2 pos);
 void InitEss(OAMObject* objArr, int objCount, Vec2 pos);
