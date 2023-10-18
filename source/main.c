@@ -14,14 +14,12 @@ OBJ_ATTR oamArray[OAM_MAX];			// OAM Buffer
 OAMObject objArray[OAM_MAX];
 Tetrimino tetriminoArray[OAM_MAX];
 
-int oamCount, tetriCount, curSpriteID;
+// psfCounter - "Per Second Frame Counter"
+int oamCount, psfCounter;
 
 int main(){
 	// Var Init
-	oamCount = 0;
-	tetriCount = 0;
-	curSpriteID = 0;
-	//int curScrBlock = 0;
+	oamCount = psfCounter = 0;
 
 	// Init Resources
 	oam_init(oamArray, OAM_MAX);
@@ -37,30 +35,41 @@ int main(){
 	InitSprite(SPR_TEE, Sprite_TeeTiles, Sprite_TeeTilesLen, Sprite_TeePal, Sprite_TeePalLen);
 	InitSprite(SPR_O, Sprite_OTiles, Sprite_OTilesLen, Sprite_OPal, Sprite_OPalLen);
 
+	int pc = 0;
 	Vec2 pos = {0,0};
-	InitTetriminoAdd(MINO_AI, pos);
-	pos.x += SPR_AI_WID;
-	InitTetriminoAdd(MINO_ELLE, pos);
-	pos.x += SPR_ELLE_WID;
-	InitTetriminoAdd(MINO_JAY, pos);
-	pos.x += SPR_JAY_WID;
-	InitTetriminoAdd(MINO_ESS, pos);
-	pos.x += SPR_ESS_WID;
-	InitTetriminoAdd(MINO_ZED, pos);
-	pos.x += SPR_ZED_WID;
-	InitTetriminoAdd(MINO_TEE, pos);
-	pos.x += SPR_TEE_WID;
-	InitTetriminoAdd(MINO_O, pos);
-	
+
 	REG_DISPCNT = DCNT_OBJ | DCNT_OBJ_1D | DCNT_BG0 | DCNT_BG1;
 	while(1){
 		vid_vsync();
-		
+		key_poll();
+
+		if(psfCounter == 60){
+			InitTetriminoAdd(pc, pos);
+			if(pc == 0)
+				pc++;
+			else
+				pc *= 2;
+			pos.x += 16;
+			if(pc > MINO_ZED)
+				pc = 0;
+			if(pos.x > SCR_WID){
+				pos.x = 0;
+				pos.y += 16;
+				if(pos.y > SCR_HGT)
+					pos.y = 0;
+			}
+		}
+
 		oam_copy(oam_mem, oamArray, oamCount);
+		psfCounter++;
+		if(psfCounter > 60)
+			psfCounter = 0;
 	}
 }
 
 void InitTetriminoAdd(int ID, Vec2 pos){
 	InitTetrimino(&oamArray[oamCount], ID, pos);
 	oamCount++;
+	if(oamCount > OAM_MAX)
+		oamCount = OAM_RESERVE + 1;
 }
